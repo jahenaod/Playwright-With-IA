@@ -1,11 +1,22 @@
 import { test, expect } from '@playwright/test';
+import { LoginPage } from './pageObjects/LoginPage';
 
 test('test', async ({ page }) => {
-
+/*
   await page.goto('https://saucedemo.com')
   await page.getByRole('textbox', { name: 'Username' }).fill('standard_user')
   await page.getByRole('textbox', { name: "Password" }).fill('secret_sauce')
   await page.getByRole('button', { name: 'Login' }).click()
+  */
+
+  const loginPage = new LoginPage(page)
+  /*
+  await loginPage.fillUsername('standard_user')
+  await loginPage.fillPassword('secret_sauce')
+  await loginPage.clickLogin()
+  */
+
+  await loginPage.loginWithCredentials('standard_user','secret_sauce')
 
   //await page.waitForLoadState('load')
   //await page.waitForTimeout(5000)
